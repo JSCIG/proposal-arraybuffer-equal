@@ -2,6 +2,8 @@
 set -euo pipefail
 set -x
 
+npm run build
+
 cd dist || exit 1
 
 jq '.name = "@nicelabs/proposal-arraybuffer-equals"' package.json > package-modified.json
