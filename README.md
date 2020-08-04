@@ -66,3 +66,7 @@ ArrayBuffer.isEquals(
   Uint8Array.of(255, 255, 255, 255).buffer,
 );
 ```
+
+## Related discussion
+
+- <https://es.discourse.group/t/compare-two-arraybuffers-bit-wise-for-equality/413>
