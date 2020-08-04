@@ -53,13 +53,13 @@ To do this, we propose a new method, `ArrayBuffer.isEquals(a, b)`, which compare
 
 ```typescript
 // returns false
-ArrayBuffer.isEquals(Uint8Array.of(0), undefined);
+ArrayBuffer.isEquals(Uint8Array.of(0).buffer, undefined);
 // returns false
-ArrayBuffer.isEquals(Uint8Array.of(0), null);
+ArrayBuffer.isEquals(Uint8Array.of(0).buffer, null);
 // returns false
-ArrayBuffer.isEquals(Uint8Array.of(0), Uint8Array.of(0, 1));
+ArrayBuffer.isEquals(Uint8Array.of(0).buffer, Uint8Array.of(0, 1).buffer);
 // returns true
-ArrayBuffer.isEquals(Uint8Array.of(0), Uint8Array.of(0));
+ArrayBuffer.isEquals(Uint8Array.of(0).buffer, Uint8Array.of(0).buffer);
 // returns true
 ArrayBuffer.isEquals(
   Uint32Array.from([Number.MAX_SAFE_INTEGER]).buffer,
