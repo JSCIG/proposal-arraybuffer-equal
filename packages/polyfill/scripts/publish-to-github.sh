@@ -4,6 +4,8 @@ set -x
 
 npm run build
 
+cp .npmrc dist
+
 cd dist || exit 1
 
 jq '.name = "@nicelabs/proposal-arraybuffer-equals"' package.json > package-modified.json
