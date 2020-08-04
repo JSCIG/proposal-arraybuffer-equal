@@ -18,7 +18,7 @@ console.log(a == b); // returns false
 
 If the re-definition [Abstract Equality Comparison](https://tc39.es/ecma262/#sec-abstract-equality-comparison) or [Strict Equality Comparison](https://tc39.es/ecma262/#sec-strict-equality-comparison) is break change behavior.
 
-So we need to **define a new method**,
+So we need to **define a new method**.
 
 ## How compare two ArrayBuffer object is equality
 
