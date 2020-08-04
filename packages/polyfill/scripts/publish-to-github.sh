@@ -4,11 +4,11 @@ set -x
 
 npm run build
 
-cp .npmrc dist
+cp "${GITHUB_WORKSPACE}/.npmrc" dist
 
 cd dist || exit 1
 
-jq '.name = "@nicelabs/proposal-arraybuffer-equals"' package.json > package-modified.json
+jq '.name = "@nicelabs/proposal-arraybuffer-equals"' package.json >package-modified.json
 mv package-modified.json package.json
 
 VERSION=$(jq -r '.version' package.json)
