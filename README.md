@@ -1,6 +1,9 @@
 # proposal-arraybuffer-equals
 
-This is a proposal to add a new method, `equals(b: ArrayBuffer)`, to JavaScript's `ArrayBuffer` class. It has not yet been presented to the JavaScript standards committee.
+This is a proposal to add a new method, `ArrayBuffer.isEquals(a: ArrayBuffer, b: ArrayBuffer)`,
+to JavaScript's `ArrayBuffer` class.
+
+It has not yet been presented to the JavaScript standards committee.
 
 ## The problem
 
