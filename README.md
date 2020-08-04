@@ -28,9 +28,9 @@ To solve this problem, you need to define a method.
 // The is TypeScript code
 function isEquals(a: ArrayBuffer, b: ArrayBuffer) {
   if (!(a instanceof ArrayBuffer)) {
-    throw new TypeError();
+    return false;
   } else if (!(b instanceof ArrayBuffer)) {
-    throw new TypeError();
+    return false;
   } else if (a === b) {
     return true;
   } else if (a.byteLength !== b.byteLength) {
