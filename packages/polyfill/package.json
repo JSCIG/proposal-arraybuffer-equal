@@ -1,0 +1,28 @@
+{
+  "name": "@nice-labs/proposal-arraybuffer-equals",
+  "version": "0.1.0",
+  "description": "ArrayBuffer.isEquals polyfill",
+  "license": "MIT",
+  "author": "Septs",
+  "main": "index.js",
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "lint": "eslint --fix --ext .ts .",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/eslint": "^7.2.0",
+    "@types/mocha": "^8.0.1",
+    "@types/rimraf": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "chai": "^4.2.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "mocha": "^8.1.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}

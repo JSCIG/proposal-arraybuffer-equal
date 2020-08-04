@@ -52,6 +52,15 @@ function isEquals(a: ArrayBuffer, b: ArrayBuffer) {
 }
 ```
 
+## Polyfill
+
+Wait for enter stage 1, then publish to npm registry.
+
+```bash
+# the is draft stage version (UNSTABLE)
+npm install @nicelabs/proposal-arraybuffer-equals --registry https://npm.septs.me
+```
+
 ## `ArrayBuffer.isEquals`
 
 To do this, we propose a new method, `ArrayBuffer.isEquals(a, b)`, which compare two array buffer is equality (bit-wise)
