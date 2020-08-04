@@ -1,7 +1,7 @@
 {
   "name": "proposals-arraybuffer-equals",
   "private": true,
-  "description": " for ECMAScript proposals.",
+  "description": "ArrayBuffer.isEquals for ECMAScript proposals.",
   "homepage": "https://github.com/NiceLabs/proposals-arraybuffer-equals",
   "repository": "https://github.com/NiceLabs/proposals-arraybuffer-equals",
   "license": "MIT",
