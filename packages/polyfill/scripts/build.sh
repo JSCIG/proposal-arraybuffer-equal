@@ -8,3 +8,4 @@ cat package.json |
   jq 'del(.devDependencies)' |
   jq 'del(.scripts)' |
   tee dist/package.json
+cp README.md dist
