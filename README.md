@@ -5,6 +5,11 @@ to JavaScript's `ArrayBuffer` class.
 
 It has not yet been presented to the JavaScript standards committee.
 
+## Need discussion
+
+- [ ] Does it need to be extended to all TypedArray?
+- [ ] Not expected input type, _throw TypeError_ or returns false?
+
 ## The problem
 
 ```typescript
