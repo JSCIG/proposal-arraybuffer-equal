@@ -16,7 +16,7 @@ console.log(a === b); // returns false
 console.log(a == b); // returns false
 ```
 
-The re-definition [Abstract Equality Comparison](https://tc39.es/ecma262/#sec-abstract-equality-comparison) or [Strict Equality Comparison](https://tc39.es/ecma262/#sec-strict-equality-comparison) is break change behavior.
+If the re-definition [Abstract Equality Comparison](https://tc39.es/ecma262/#sec-abstract-equality-comparison) or [Strict Equality Comparison](https://tc39.es/ecma262/#sec-strict-equality-comparison) is break change behavior.
 
 So we need to **define a new method**,
 
