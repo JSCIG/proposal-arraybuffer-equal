@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="./spec.js"></script>
 <pre class="metadata">
-title: Proposal Title Goes Here
+title: Proposal ArrayBuffer.isEquals
 stage: -1
-contributors: Your Name(s) Here
+contributors: Septs
 </pre>
 
 <emu-clause id="sec-demo-clause">
-  <h1>This is an emu-clause</h1>
+  <h1>ArrayBuffer.isEquals ( _a_ , _b_)</h1>
   <p>This is an algorithm:</p>
   <emu-alg>
     1. Let _proposal_ be *undefined*.

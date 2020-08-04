@@ -1,60 +1,65 @@
-# template-for-proposals
+# proposal-arraybuffer-equals
 
-A repository template for ECMAScript proposals.
+This is a proposal to add a new method, `equals(b: ArrayBuffer)`, to JavaScript's `ArrayBuffer` class. It has not yet been presented to the JavaScript standards committee.
 
-## Before creating a proposal
+## The problem
 
-Please ensure the following:
-  1. You have read the [process document](https://tc39.github.io/process-document/)
-  1. You have reviewed the [existing proposals](https://github.com/tc39/proposals/)
-  1. You are aware that your proposal requires being a member of TC39, or locating a TC39 delegate to "champion" your proposal
+```typescript
+const encoder = new TextEncoder();
+const input = 'sample';
+const a = encoder.encode(input);
+const b = encoder.encode(input);
+console.log(a === b); // returns false
+console.log(a == b); // returns false
+```
 
-## Create your proposal repo
+The re-definition [Abstract Equality Comparison](https://tc39.es/ecma262/#sec-abstract-equality-comparison) or [Strict Equality Comparison](https://tc39.es/ecma262/#sec-strict-equality-comparison) is break change behavior.
 
-Follow these steps:
-  1.  Click the green ["use this template"](https://github.com/tc39/template-for-proposals/generate) button in the repo header. (Note: Do not fork this repo in GitHub's web interface, as that will later prevent transfer into the TC39 organization)
-  1.  Go to your repo settings “Options” page, under “GitHub Pages”, and set the source to the **main branch** under the root (and click Save, if it does not autosave this setting)
-      1. check "Enforce HTTPS"
-      1. On "Options", under "Features", Ensure "Issues" is checked, and disable "Wiki", and "Projects" (unless you intend to use Projects)
-      1. Under "Merge button", check "automatically delete head branches"
-<!--
-  1.  Avoid merge conflicts with build process output files by running:
-      ```sh
-      git config --local --add merge.output.driver true
-      git config --local --add merge.output.driver true
-      ```
-  1.  Add a post-rewrite git hook to auto-rebuild the output on every commit:
-      ```sh
-      cp hooks/post-rewrite .git/hooks/post-rewrite
-      chmod +x .git/hooks/post-rewrite
-      ```
--->
-  1.  ["How to write a good explainer"][explainer] explains how to make a good first impression.
+So we need to **define a new method**,
 
-      > Each TC39 proposal should have a `README.md` file which explains the purpose
-      > of the proposal and its shape at a high level.
-      >
-      > ...
-      >
-      > The rest of this page can be used as a template ...
+## How compare two ArrayBuffer object is equality
 
-      Your explainer can point readers to the `index.html` generated from `spec.emu`
-      via markdown like
+To solve this problem, you need to define a method.
 
-      ```markdown
-      You can browse the [ecmarkup output](https://ACCOUNT.github.io/PROJECT/)
-      or browse the [source](https://github.com/ACCOUNT/PROJECT/blob/HEAD/spec.emu).
-      ```
+```typescript
+// The is TypeScript code
+function isEquals(a: ArrayBuffer, b: ArrayBuffer) {
+  if (!(a instanceof ArrayBuffer)) {
+    throw new TypeError();
+  } else if (!(b instanceof ArrayBuffer)) {
+    throw new TypeError();
+  } else if (a === b) {
+    return true;
+  } else if (a.byteLength !== b.byteLength) {
+    return false;
+  }
+  const view1 = new DataView(a);
+  const view2 = new DataView(b);
+  for (let i = 0; i < view1.byteLength; i++) {
+    if (view1.getUint8(i) !== view2.getUint8(i)) {
+      return false;
+    }
+  }
+  return true;
+}
+```
 
-      where *ACCOUNT* and *PROJECT* are the first two path elements in your project's Github URL.
-      For example, for github.com/**tc39**/**template-for-proposals**, *ACCOUNT* is "tc39"
-      and *PROJECT* is "template-for-proposals".
+## `ArrayBuffer.isEquals`
 
+To do this, we propose a new method, `ArrayBuffer.isEquals(a, b)`, which compare two array buffer is equality (bit-wise)
 
-## Maintain your proposal repo
-
-  1. Make your changes to `spec.emu` (ecmarkup uses HTML syntax, but is not HTML, so I strongly suggest not naming it ".html")
-  1. Any commit that makes meaningful changes to the spec, should run `npm run build` and commit the resulting output.
-  1. Whenever you update `ecmarkup`, run `npm run build` and commit any changes that come from that dependency.
-
-  [explainer]: https://github.com/tc39/how-we-work/blob/HEAD/explainer.md
+```typescript
+// returns false
+ArrayBuffer.isEquals(Uint8Array.of(0), undefined);
+// returns false
+ArrayBuffer.isEquals(Uint8Array.of(0), null);
+// returns false
+ArrayBuffer.isEquals(Uint8Array.of(0), Uint8Array.of(0, 1));
+// returns true
+ArrayBuffer.isEquals(Uint8Array.of(0), Uint8Array.of(0));
+// returns true
+ArrayBuffer.isEquals(
+  Uint32Array.from([Number.MAX_SAFE_INTEGER]).buffer,
+  Uint8Array.of(255, 255, 255, 255).buffer,
+);
+```

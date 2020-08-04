@@ -1,17 +1,14 @@
 {
+  "name": "proposals-arraybuffer-equals",
   "private": true,
-  "name": "template-for-proposals",
-  "description": "A repository template for ECMAScript proposals.",
-  "scripts": {
-    "start": "npm run build -- --watch",
-    "build": "ecmarkup spec.emu index.html"
-  },
-  "homepage": "https://github.com/tc39/template-for-proposals#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tc39/template-for-proposals.git"
-  },
+  "description": " for ECMAScript proposals.",
+  "homepage": "https://github.com/NiceLabs/proposals-arraybuffer-equals",
+  "repository": "https://github.com/NiceLabs/proposals-arraybuffer-equals",
   "license": "MIT",
+  "scripts": {
+    "build": "ecmarkup spec.emu index.html",
+    "start": "npm run build -- --watch"
+  },
   "devDependencies": {
     "ecmarkup": "^3.25.3"
   }
