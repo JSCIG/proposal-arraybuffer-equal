@@ -7,8 +7,8 @@ const fuzzBufferA = Uint8Array.of(0).buffer;
 const fuzzBufferB = Uint8Array.of(0, 0).buffer;
 const fuzzBufferC = Uint8Array.of(0, 1).buffer;
 
-describe('equals', () => {
-  const pairs: Array<Parameters<typeof ArrayBuffer.isEquals>> = [
+describe('equal', () => {
+  const pairs: Array<Parameters<typeof ArrayBuffer.isEqual>> = [
     // reference equals
     [fuzzBufferA, fuzzBufferA],
     // logic equals
@@ -16,14 +16,14 @@ describe('equals', () => {
   ];
 
   for (const [a, b] of pairs) {
-    it(`ArrayBuffer.isEquals(${repr(a)}, ${repr(b)}) = true`, () => {
-      assert.isTrue(ArrayBuffer.isEquals(a, b));
+    it(`ArrayBuffer.isEqual(${repr(a)}, ${repr(b)}) = true`, () => {
+      assert.isTrue(ArrayBuffer.isEqual(a, b));
     });
   }
 });
 
-describe('not equals', () => {
-  const pairs: Array<Parameters<typeof ArrayBuffer.isEquals>> = [
+describe('not equal', () => {
+  const pairs: Array<Parameters<typeof ArrayBuffer.isEqual>> = [
     // unexpected input type
     [undefined, undefined],
     [null, undefined],
@@ -40,8 +40,8 @@ describe('not equals', () => {
   ];
 
   for (const [a, b] of pairs) {
-    it(`ArrayBuffer.isEquals(${repr(a)}, ${repr(b)}) = false`, () => {
-      assert.isFalse(ArrayBuffer.isEquals(a, b));
+    it(`ArrayBuffer.isEqual(${repr(a)}, ${repr(b)}) = false`, () => {
+      assert.isFalse(ArrayBuffer.isEqual(a, b));
     });
   }
 });
@@ -55,8 +55,8 @@ describe('unexpected input case', () => {
   ];
 
   for (const [a, b] of pairs) {
-    it(`ArrayBuffer.isEquals(${repr(a)}, ${repr(b)}) = false`, () => {
-      assert.isFalse(ArrayBuffer.isEquals(a, b));
+    it(`ArrayBuffer.isEqual(${repr(a)}, ${repr(b)}) = false`, () => {
+      assert.isFalse(ArrayBuffer.isEqual(a, b));
     });
   }
 });
