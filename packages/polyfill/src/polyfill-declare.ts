@@ -1,5 +1,5 @@
 interface ArrayBufferConstructor {
-  isEquals(
+  isEqual(
     a: ArrayBuffer | null | undefined,
     b: ArrayBuffer | null | undefined,
   ): boolean;

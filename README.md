@@ -1,6 +1,6 @@
-# proposal-arraybuffer-equals
+# proposal-arraybuffer-equal
 
-This is a proposal to add a new method, `ArrayBuffer.isEquals(a: ArrayBuffer, b: ArrayBuffer)`,
+This is a proposal to add a new method, `ArrayBuffer.isEqual(a: ArrayBuffer, b: ArrayBuffer)`,
 to JavaScript's `ArrayBuffer` class.
 
 It has not yet been presented to the JavaScript standards committee.
@@ -31,7 +31,7 @@ To solve this problem, you need to define a method.
 
 ```typescript
 // The is TypeScript code
-function isEquals(a: ArrayBuffer, b: ArrayBuffer) {
+function isEqual(a: ArrayBuffer, b: ArrayBuffer) {
   if (!(a instanceof ArrayBuffer)) {
     return false;
   } else if (!(b instanceof ArrayBuffer)) {
@@ -61,21 +61,21 @@ Wait for enter stage 1, then publish to npm registry.
 npm install @nicelabs/proposal-arraybuffer-equals --registry https://npm.septs.me
 ```
 
-## `ArrayBuffer.isEquals`
+## `ArrayBuffer.isEqual`
 
-To do this, we propose a new method, `ArrayBuffer.isEquals(a, b)`, which compare two array buffer is equality (bit-wise)
+To do this, we propose a new method, `ArrayBuffer.isEqual(a, b)`, which compare two array buffer is equality (bit-wise)
 
 ```typescript
 // returns false
-ArrayBuffer.isEquals(Uint8Array.of(0).buffer, undefined);
+ArrayBuffer.isEqual(Uint8Array.of(0).buffer, undefined);
 // returns false
-ArrayBuffer.isEquals(Uint8Array.of(0).buffer, null);
+ArrayBuffer.isEqual(Uint8Array.of(0).buffer, null);
 // returns false
-ArrayBuffer.isEquals(Uint8Array.of(0).buffer, Uint8Array.of(0, 1).buffer);
+ArrayBuffer.isEqual(Uint8Array.of(0).buffer, Uint8Array.of(0, 1).buffer);
 // returns true
-ArrayBuffer.isEquals(Uint8Array.of(0).buffer, Uint8Array.of(0).buffer);
+ArrayBuffer.isEqual(Uint8Array.of(0).buffer, Uint8Array.of(0).buffer);
 // returns true
-ArrayBuffer.isEquals(
+ArrayBuffer.isEqual(
   Uint32Array.from([Number.MAX_SAFE_INTEGER]).buffer,
   Uint8Array.of(255, 255, 255, 255).buffer,
 );

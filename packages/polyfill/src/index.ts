@@ -1,4 +1,4 @@
-export function isEquals(
+export function isEqual(
   a: ArrayBuffer | null | undefined,
   b: ArrayBuffer | null | undefined,
 ): boolean {

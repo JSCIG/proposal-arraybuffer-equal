@@ -1,9 +1,9 @@
 /// <reference path="./polyfill-declare.ts" />
-import { isEquals } from './index';
+import { isEqual } from './index';
 
-Object.defineProperty(ArrayBuffer, 'isEquals', {
+Object.defineProperty(ArrayBuffer, 'isEqual', {
   enumerable: false,
   writable: true,
   configurable: true,
-  value: isEquals,
+  value: isEqual,
 });
